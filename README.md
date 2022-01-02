@@ -7,5 +7,7 @@ Pretty useful when working with [Vault Transit Secret engine](https://www.vaultp
 
 ### Instalation
 ```
-go install github.com/tr3mor/clip2decode@latest
+git clone https://github.com/tr3mor/clip2decode.git
+make
+mv clip2decode <dir in your $PATH"
 ```
