@@ -2,7 +2,10 @@
 package clip2decode
 
 import (
-	"os/exec"
+	"errors"
+	"log"
+
+	"golang.design/x/clipboard"
 )
 
 type ClipboardInterface interface {
@@ -14,31 +17,25 @@ type Clipboard struct {
 }
 
 func NewClipboard() *Clipboard {
+	err := clipboard.Init()
+	if err != nil {
+		log.Fatalf("Clipboard init failed: %s", err)
+	}
 	return &Clipboard{}
 }
 
 func (c *Clipboard) GetData() (string, error) {
-	output, err := exec.Command("pbpaste").Output()
-	if err != nil {
-		return "", err
+	output := clipboard.Read(clipboard.FmtText)
+	if output == nil {
+		return "", errors.New("failed to get data from clipboard via systemcall")
 	}
 	return string(output), nil
 }
 
 func (c *Clipboard) WriteData(s string) error {
-	cmd := exec.Command("pbcopy")
-	in, err := cmd.StdinPipe()
-	if err != nil {
-		return err
+	status := clipboard.Write(clipboard.FmtText, []byte(s))
+	if status == nil {
+		return errors.New("failed to write to clipboard via systemcall")
 	}
-	err = cmd.Start()
-	if err != nil {
-		return err
-	}
-	_, err = in.Write([]byte(s))
-	err = in.Close()
-	if err != nil {
-		return err
-	}
-	return cmd.Wait()
+	return nil
 }
