@@ -20,4 +20,4 @@ go.work
 
 # Goland files
 .idea
-clip2decode
+bin

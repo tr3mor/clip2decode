@@ -1,11 +1,12 @@
 package clip2decode_test
 
 import (
-	"clip2decode/internal/app/clip2decode"
-	"clip2decode/internal/app/clip2decode/mocks"
+	"github/tr3mor/clip2decode/internal/app/clip2decode"
+	"github/tr3mor/clip2decode/internal/app/clip2decode/mocks"
+	"testing"
+
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/suite"
-	"testing"
 )
 
 type AppTestSuite struct {
@@ -36,6 +37,6 @@ func (s *AppTestSuite) TestIncorrectBase64() {
 	s.Error(err)
 	s.Equal("Failed to decode base64", data)
 }
-func TestExampleTestSuite(t *testing.T) {
+func TestC2DSuite(t *testing.T) {
 	suite.Run(t, new(AppTestSuite))
 }
