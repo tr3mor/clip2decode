@@ -8,13 +8,13 @@ jobs:
     name: lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-go@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v4
         with:
-          go-version: 1.17
-      - uses: actions/checkout@v3
+          go-version: '1.19'
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v3
         with:
-          version: v1.29
+          version: latest
       - name: Test
         run: go test -v ./...
