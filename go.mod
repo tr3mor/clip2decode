@@ -4,7 +4,7 @@ go 1.24
 
 require (
 	github.com/golang/mock v1.6.0
-	github.com/stretchr/testify v1.11.0
+	github.com/stretchr/testify v1.11.1
 	golang.design/x/clipboard v0.7.1
 )
 
