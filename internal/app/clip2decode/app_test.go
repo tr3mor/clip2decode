@@ -1,8 +1,8 @@
 package clip2decode_test
 
 import (
-	"github/tr3mor/clip2decode/internal/app/clip2decode"
-	"github/tr3mor/clip2decode/internal/app/clip2decode/mocks"
+	"github.com/tr3mor/clip2decode/internal/app/clip2decode"
+	"github.com/tr3mor/clip2decode/internal/app/clip2decode/mocks"
 	"testing"
 
 	"github.com/golang/mock/gomock"

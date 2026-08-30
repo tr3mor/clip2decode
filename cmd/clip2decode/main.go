@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github/tr3mor/clip2decode/internal/app/clip2decode"
+	"github.com/tr3mor/clip2decode/internal/app/clip2decode"
 	"log"
 )
 
