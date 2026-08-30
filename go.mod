@@ -1,4 +1,4 @@
-module github/tr3mor/clip2decode
+module github.com/tr3mor/clip2decode
 
 go 1.24
 
