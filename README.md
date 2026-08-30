@@ -6,8 +6,17 @@ Pretty useful when working with [Vault Transit Secret engine](https://www.vaultp
 **Works only for MacOS**
 
 ### Installation
+
+#### Using go install
+```
+go install github.com/tr3mor/clip2decode/cmd/clip2decode@latest
+```
+This installs the `clip2decode` binary to `$(go env GOPATH)/bin` (make sure that's in your `$PATH`).
+
+#### From source
 ```
 git clone https://github.com/tr3mor/clip2decode.git
+cd clip2decode
 make
-mv clip2decode <dir in your $PATH"
+mv bin/c2d <dir in your $PATH>/clip2decode
 ```
