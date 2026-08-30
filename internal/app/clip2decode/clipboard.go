@@ -2,6 +2,7 @@
 package clip2decode
 
 import (
+	"context"
 	"errors"
 	"log"
 
@@ -25,7 +26,10 @@ func NewClipboard() *Clipboard {
 }
 
 func (c *Clipboard) GetData() (string, error) {
-	output := clipboard.Read(clipboard.FmtText)
+	output, err := clipboard.Read(context.Background(), clipboard.FmtText)
+	if err != nil {
+		return "", err
+	}
 	if output == nil {
 		return "", errors.New("failed to get data from clipboard via systemcall")
 	}
@@ -33,7 +37,10 @@ func (c *Clipboard) GetData() (string, error) {
 }
 
 func (c *Clipboard) WriteData(s string) error {
-	status := clipboard.Write(clipboard.FmtText, []byte(s))
+	status, err := clipboard.Write(context.Background(), clipboard.FmtText, []byte(s))
+	if err != nil {
+		return err
+	}
 	if status == nil {
 		return errors.New("failed to write to clipboard via systemcall")
 	}
